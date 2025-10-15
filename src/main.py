@@ -1,11 +1,10 @@
-# src/main.py
+
 import sys
 import os
 import json
 from src.utils.pdf_utils import extract_text_from_pdf
 from src.parsers import PARSERS
 from src.parsers import HDFCParser, SBIParser, ICICIParser, AxisParser, CitiParser
-# ✅ Correct (matches your actual parser class names)
 from src.parsers.axis_parser import AxisParser
 from src.parsers.sbi_parser import SBIParser
 from src.parsers.hdfc_parser import HDFCParser
@@ -13,10 +12,6 @@ from src.parsers.citi_parser import CitiParser
 from src.parsers.icici_parser import ICICIParser
 
 
-
-# -----------------------------
-# Parser map
-# -----------------------------
 parsers = {
     "hdfc": HDFCParser,
     "sbi": SBIParser,
@@ -26,14 +21,10 @@ parsers = {
 }
 
 
-# -----------------------------
-# Smart Bank detection logic
-# -----------------------------
 def detect_bank(text: str, pdf_path: str = ""):
     """Detect bank from text content and filename fallback."""
     t = text.lower()
 
-    # weighted keyword scoring
     scores = {
         "hdfc": 0,
         "sbi": 0,
@@ -42,7 +33,6 @@ def detect_bank(text: str, pdf_path: str = ""):
         "citi": 0
     }
 
-    # Primary text-based detection
     if "hdfc bank credit card" in t or "hdfc credit card statement" in t:
         scores["hdfc"] += 3
     elif "hdfc bank" in t:
@@ -68,12 +58,10 @@ def detect_bank(text: str, pdf_path: str = ""):
     elif "citibank" in t or "citi bank" in t:
         scores["citi"] += 1
 
-    # Pick the highest score
     best = max(scores, key=scores.get)
     if scores[best] > 0:
         return best
 
-    # 🔁 Fallback to filename hint if no keywords detected
     fname = os.path.basename(pdf_path).lower()
     if "icici" in fname:
         return "icici"
@@ -100,18 +88,11 @@ def detect_bank_with_logo(text: str, pdf_path: str = ""):
     return bank
 
 
-# -----------------------------
-# Main parsing function
-# -----------------------------
 def parse_file(path: str, output_dir: str = "output"):
-    # Extract text from PDF
     text = extract_text_from_pdf(path)
-
-    # Detect bank using text + filename
     bank_key = detect_bank(text, path)
     print(f"[INFO] detected bank: {bank_key}")
 
-    # Choose parser class
     if not bank_key:
         print("[WARN] Bank not detected automatically. Using HDFC parser as default.")
         parser_cls = HDFCParser
@@ -121,17 +102,15 @@ def parse_file(path: str, output_dir: str = "output"):
             print(f"[WARN] Parser class for {bank_key} not found. Using HDFC parser as fallback.")
             parser_cls = HDFCParser
 
-    # Instantiate parser
     parser = parser_cls(path)
 
-    # Parse PDF
+ 
     try:
         result = parser.parse()
     except NotImplementedError as e:
         print("[ERROR]", e)
         return None
 
-    # Save JSON output
     os.makedirs(output_dir, exist_ok=True)
     base = os.path.basename(path)
     json_name = os.path.splitext(base)[0] + ".json"
@@ -141,10 +120,6 @@ def parse_file(path: str, output_dir: str = "output"):
     print(f"[OK] Parsed output saved to {out_path}")
     return out_path
 
-
-# -----------------------------
-# Entry point
-# -----------------------------
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: python -m src.main <path-to-pdf> [output-dir]")
@@ -153,3 +128,4 @@ if __name__ == "__main__":
     pdf_path = sys.argv[1]
     outdir = sys.argv[2] if len(sys.argv) > 2 else "output"
     parse_file(pdf_path, outdir)
+
