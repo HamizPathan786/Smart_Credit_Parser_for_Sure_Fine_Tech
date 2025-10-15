@@ -1,0 +1,26 @@
+{
+  "bank": "Citi Bank",
+  "cardholder_name": "Rohan Verma\nCard Variant",
+  "card_last_4": "9988",
+  "total_due": null,
+  "due_date": "25-Oct-2025",
+  "total_spent": null,
+  "transactions": [
+    {
+      "date": "09-Sep-2025",
+      "description": "Amazon Prime Subscription",
+      "amount": 999.0
+    },
+    {
+      "date": "14-Sep-2025",
+      "description": "Bookstore - Crossword",
+      "amount": 450.9
+    },
+    {
+      "date": "27-Sep-2025",
+      "description": "Gas Station",
+      "amount": 587.0
+    }
+  ],
+  "_confidence": 0.67
+}
