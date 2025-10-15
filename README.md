@@ -6,7 +6,7 @@ SmartCreditParser is an intelligent **PDF statement parsing system** built with 
 This system performs **bank detection, data extraction, transaction parsing**, and **JSON report generation**, helping automate financial data digitization and analysis with precision.
 
 ---
-
+![image alt](https://github.com/HamizPathan786/Smart_Credit_Parser_for_Sure_Fine_Tech/blob/c2d96bac29a5b16177095386e4fcfcc08b1efc34/Screenshot%202025-10-15%20225824.png)
 ## 🚀 Features
 
 - 🔍 **Automatic Bank Detection** — Identifies the issuing bank using keyword scoring and parsing logic.  
