@@ -1,4 +1,4 @@
-# src/parsers/__init__.py
+
 from .hdfc_parser import HDFCParser
 from .sbi_parser import SBIParser
 from .icici_parser import ICICIParser
@@ -7,7 +7,6 @@ from .citi_parser import CitiParser
 
 __all__ = ["HDFCParser", "SBIParser", "ICICIParser", "AxisParser", "CitiParser"]
 
-# mapping for detection (used in main)
 PARSERS = {
     "hdfc": HDFCParser,
     "sbi": SBIParser,
@@ -15,3 +14,4 @@ PARSERS = {
     "axis": AxisParser,
     "citi": CitiParser
 }
+
