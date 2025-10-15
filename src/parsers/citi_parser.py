@@ -18,33 +18,29 @@ class CitiParser(BaseParser):
             "transactions": []
         }
 
-        # --- Extract main fields ---
-        # Cardholder name
         name_match = re.search(r"Cardholder[:\-]?\s*([A-Za-z\s\.]+)", text)
         if name_match:
             data["cardholder_name"] = name_match.group(1).strip()
 
-        # Card number (last 4 digits)
         card_match = re.search(r"Card\s*(?:Ending|Number)[:\-]?\s*(?:\*{4}\s*){3}(\d{4})", text)
         if card_match:
             data["card_last_4"] = card_match.group(1)
 
-        # Total due
+      
         total_due_match = re.search(r"Total\s+Due[:\-]?\s*[₹Rs]*\s*([\d,]+\.\d{2})", text)
         if total_due_match:
             data["total_due"] = float(total_due_match.group(1).replace(",", ""))
 
-        # Due date
         due_date_match = re.search(r"Due\s*Date[:\-]?\s*(\d{1,2}-[A-Za-z]{3}-\d{4})", text)
         if due_date_match:
             data["due_date"] = due_date_match.group(1)
 
-        # Total spent
+       
         spent_match = re.search(r"Total\s+Spent[:\-]?\s*[₹Rs]*\s*([\d,]+\.\d{2})", text)
         if spent_match:
             data["total_spent"] = float(spent_match.group(1).replace(",", ""))
 
-        # --- Transactions ---
+       
         txn_pattern = re.findall(
             r"(\d{2}-[A-Za-z]{3}-\d{4})\s+(.+?)\s+([\d,]+\.\d{2})",
             text
@@ -56,8 +52,9 @@ class CitiParser(BaseParser):
                 "amount": float(t[2].replace(",", ""))
             })
 
-        # --- Confidence ---
+     
         found_values = [v for k, v in data.items() if v and k != "transactions"]
         data["_confidence"] = round(len(found_values) / (len(data) - 1), 2)
 
         return data
+
