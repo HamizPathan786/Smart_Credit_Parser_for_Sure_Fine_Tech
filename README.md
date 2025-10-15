@@ -29,6 +29,21 @@ This system performs **bank detection, data extraction, transaction parsing**, a
 - 🧠 **Confidence Scoring** — Measures extraction accuracy based on matched data points.  
 - 📦 **JSON Output** — Automatically saves structured parsed data for further analytics or integration.
 
+![image alt](https://github.com/HamizPathan786/Smart_Credit_Parser_for_Sure_Fine_Tech/blob/d888493a6e436d105a968609a4f18d4e95758538/Screenshot%202025-10-15%20225901.png)
+
+![image alt](https://github.com/HamizPathan786/Smart_Credit_Parser_for_Sure_Fine_Tech/blob/d888493a6e436d105a968609a4f18d4e95758538/Screenshot%202025-10-15%20225915.png)
+
+![image alt](https://github.com/HamizPathan786/Smart_Credit_Parser_for_Sure_Fine_Tech/blob/d888493a6e436d105a968609a4f18d4e95758538/Screenshot%202025-10-15%20225942.png)
+
+
+![image alt](https://github.com/HamizPathan786/Smart_Credit_Parser_for_Sure_Fine_Tech/blob/d888493a6e436d105a968609a4f18d4e95758538/Screenshot%202025-10-15%20225958.png)
+
+
+![image alt](https://github.com/HamizPathan786/Smart_Credit_Parser_for_Sure_Fine_Tech/blob/d888493a6e436d105a968609a4f18d4e95758538/Screenshot%202025-10-15%20230018.png)
+
+![image alt](https://github.com/HamizPathan786/Smart_Credit_Parser_for_Sure_Fine_Tech/blob/d888493a6e436d105a968609a4f18d4e95758538/Screenshot%202025-10-15%20230034.png)
+
+
 ---
 
 ## 🏗️ Tech Stack
