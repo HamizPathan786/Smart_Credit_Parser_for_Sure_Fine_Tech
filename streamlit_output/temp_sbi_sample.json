@@ -1,0 +1,26 @@
+{
+  "bank": "SBI Card",
+  "cardholder_name": "Aisha Khan\nCard Variant",
+  "card_last_4": "2345",
+  "total_due": null,
+  "due_date": "15-Oct-2025",
+  "total_spent": null,
+  "transactions": [
+    {
+      "date": "05-Sep-2025",
+      "description": "Flipkart Purchase",
+      "amount": 2200.0
+    },
+    {
+      "date": "11-Sep-2025",
+      "description": "Uber Ride",
+      "amount": 320.75
+    },
+    {
+      "date": "19-Sep-2025",
+      "description": "Zomato Order",
+      "amount": 450.25
+    }
+  ],
+  "_confidence": 0.67
+}
