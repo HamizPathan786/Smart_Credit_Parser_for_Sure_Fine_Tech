@@ -1,4 +1,4 @@
-# app.py
+
 import streamlit as st
 import json
 import os
@@ -11,24 +11,20 @@ st.title("💳 Smart Credit Card Statement Parser")
 uploaded_file = st.file_uploader("Upload your credit card statement (PDF)", type=["pdf"])
 
 if uploaded_file:
-    # Save uploaded file temporarily
     temp_path = f"temp_{uploaded_file.name}"
     with open(temp_path, "wb") as f:
         f.write(uploaded_file.getbuffer())
 
     st.info(f"⏳ Parsing `{uploaded_file.name}`...")
 
-    # Parse PDF
     output_path = parse_file(temp_path, output_dir="streamlit_output")
 
-    # Load parsed JSON
     with open(output_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     bank_name = data.get("bank", "Unknown Bank")
     st.success(f"✅ Successfully parsed statement for **{bank_name}**")
 
-    # --- Clean summary section ---
     st.subheader("📄 Statement Summary")
     summary_data = {
         "Bank": [data.get("bank", "—")],
@@ -41,7 +37,6 @@ if uploaded_file:
     }
     st.table(pd.DataFrame(summary_data))
 
-    # --- Transactions Section ---
     transactions = data.get("transactions", [])
     if transactions:
         st.subheader("💰 Transaction Details")
@@ -52,7 +47,6 @@ if uploaded_file:
 
         st.dataframe(df, use_container_width=True)
 
-        # --- Spending Chart ---
         st.subheader("📊 Spending Overview")
         import matplotlib.pyplot as plt
 
@@ -66,5 +60,5 @@ if uploaded_file:
     else:
         st.warning("⚠️ No transactions found in this statement.")
 
-    # --- Cleanup ---
     os.remove(temp_path)
+
