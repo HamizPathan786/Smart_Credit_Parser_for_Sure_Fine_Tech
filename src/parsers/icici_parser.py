@@ -18,7 +18,7 @@ class ICICIParser(BaseParser):
             "transactions": []
         }
 
-        # === Extract key fields based on actual text ===
+        
         name_match = re.search(r"Cardholder:\s*(.+)", text)
         if name_match:
             data["cardholder_name"] = name_match.group(1).strip()
@@ -39,7 +39,7 @@ class ICICIParser(BaseParser):
         if spent_match:
             data["total_spent"] = float(spent_match.group(1).replace(",", ""))
 
-        # === Transactions ===
+      
         txn_pattern = re.findall(
             r"(\d{2}-[A-Za-z]{3}-\d{4})\s+(.+?)\s+([\d,]+\.\d{2})",
             text
@@ -52,8 +52,8 @@ class ICICIParser(BaseParser):
                 "amount": float(t[2].replace(",", ""))
             })
 
-        # === Confidence Score ===
         found_values = [v for k, v in data.items() if v and k != "transactions"]
         data["_confidence"] = round(len(found_values) / (len(data) - 1), 2)
 
         return data
+
