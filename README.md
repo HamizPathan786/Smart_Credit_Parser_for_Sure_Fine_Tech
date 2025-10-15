@@ -82,6 +82,18 @@ SmartCreditParser/
 ├── requirements.txt
 └── README.md
 
+Create and activate a virtual environment:
+python -m venv venv
+venv\Scripts\activate     # For Windows
+source venv/bin/activate  # For Mac/Linux
+
+Install dependencies:
+pip install -r requirements.txt
+
+Run the Streamlit app:
+streamlit run app.py
+
+
 
 🧩 Future Enhancements
 
